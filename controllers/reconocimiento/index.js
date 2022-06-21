@@ -45,13 +45,7 @@ async function postDogCat(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    fs.writeFile(ruta, binaryData, (err) => {
-        if(err){
-            return res.status(400).json({
-                error: 'problems with the image'
-            })
-        }
-    })
+    fs.writeFileSync(ruta, binaryData)
 
     // cargando modelo
     const modelLink = "file://./models/modelo_perro_gato_nuevo/model.json"
