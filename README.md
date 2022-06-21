@@ -10,6 +10,12 @@ Proyecto realizado con `nodejs` y `express`.
 ## A tener en cuenta
 - Al levantar el servicio se deben modificar las rutas para que sean coherentes con el servicio levantado
 
+## Carpeta test
+En la carpeta `test` hay un script en python para hacer pruebas a la api. Este script consiste en tomar una imagen dentro de la misma carpeta, pasarla a `base64` y realizar un request a la api con el formato de entrada detallado mas adelante.  
+Para hacer las pruebas solo se deben editar manualmente dos secciones del script:
+- `RUTA`: Se debe modificar la ruta de la imagen a usar. Esta ira variando segun la imagen que se quiera testear.
+- `ENDPOINT`: Se debe descomentar el endpoint a testear y comentar los otros. Estan en el mismo orden de la documentacion.
+
 ## Documentación de la API
 - Rutas (reemplazar host por el host del servicio levantado o en su defecto, localhost:3001)
   - `host/api/dogorcat`
