@@ -30,10 +30,11 @@ headers = {
 headersjson = json.dumps(headers)
 
 ######## ENDPOINT #########################################################################################
+response = req.get("https://samfind-backend.herokuapp.com/api") ############
 # response = req.post("http://localhost:3001/api/dogorcat", headers=headers, data=payloadjson) ############
 # response = req.post("http://localhost:3001/api/dogbreed", headers=headers, data=payloadjson) ############
 # response = req.post("http://localhost:3001/api/catbreed", headers=headers, data=payloadjson) ############
-response = req.post("http://localhost:3001/api/alldogcat", headers=headers, data=payloadjson) ############
+# response = req.post("http://localhost:3001/api/alldogcat", headers=headers, data=payloadjson) ############
 ###########################################################################################################
 
 # respuesta
