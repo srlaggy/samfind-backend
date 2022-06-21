@@ -3,7 +3,8 @@ import base64
 import requests as req
 
 # imagen a base64
-ruta = "imagen5.jpg"
+ruta = "imagen6.png" ### PERRO VS GATO
+# ruta = "imagen6.png" ### RAZA PERRO
 nombre = ruta.split(".")[0]
 formato = ruta.split(".")[1]
 
@@ -27,7 +28,10 @@ headers = {
 }
 headersjson = json.dumps(headers)
 
-response = req.post("http://localhost:3001/api/dogorcat", headers=headers, data=payloadjson)
+# response = req.post("http://localhost:3001/api/dogorcat", headers=headers, data=payloadjson)
+# response = req.post("http://localhost:3001/api/dogbreed", headers=headers, data=payloadjson)
+# response = req.post("http://localhost:3001/api/catbreed", headers=headers, data=payloadjson)
+response = req.post("http://localhost:3001/api/alldogcat", headers=headers, data=payloadjson)
 
 # respuesta
 if response:
