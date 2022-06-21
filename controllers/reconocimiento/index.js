@@ -45,6 +45,12 @@ async function postDogCat(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
+    const ruta_unida = __dirname + "/../../models/images/" + nombreFile
+    console.log("dirname: " + __dirname);
+    console.log("relativa: " + "/../../models/images/");
+    console.log("file: " + nombreFile);
+    console.log("ruta unida: " + ruta_unida);
+    console.log("ruta join: " + ruta);
     fs.writeFileSync(ruta, binaryData)
 
     // cargando modelo

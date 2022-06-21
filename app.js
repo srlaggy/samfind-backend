@@ -12,9 +12,9 @@ app.use("/api", reconocimiento)
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     try {
-        console.log("Connected to database");
+        console.log("Connected");
     } catch (err) {
-        console.error("Error. Cant connect to database:", err);
+        console.error("Error. Cant connect: ", err);
     }
     console.log(`Server running on port ${PORT}`)
 })
