@@ -55,9 +55,7 @@ async function postDogCat(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    console.log("vamos a crear la imagen");
     const estadoCreacion = await crearImagen(ruta, binaryData)
-    console.log("ya se creo la imagen");
     if(estadoCreacion === 0){
         return res.status(400).json({
             error: 'problems with the image'
@@ -69,7 +67,7 @@ async function postDogCat(req, res){
     const model = await tf.loadLayersModel(modelLink)
 
     // definiendo rutas y leyendo imagen
-    // const imageLeer = fs.readFileSync(ruta)
+    const imageLeer = fs.readFileSync(ruta)
     console.log("Procesando imagen...")
     const imagenProcesada = preprocess(imageLeer)
 

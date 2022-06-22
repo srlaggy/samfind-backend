@@ -49,3 +49,4 @@ if response:
     print(response.text)
 else:
     print('An error has occurred.')
+    print(response.text)
