@@ -4,7 +4,7 @@ import requests as req
 
 # imagen a base64
 #################################
-ruta = "imagen1.png" ### RUTA ###
+ruta = "imagen6.png" ### RUTA ###
 #################################
 nombre = ruta.split(".")[0]
 formato = ruta.split(".")[1]

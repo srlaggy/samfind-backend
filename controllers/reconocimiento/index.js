@@ -110,13 +110,12 @@ async function postDogBreed(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    fs.writeFile(ruta, binaryData, (err) => {
-        if(err){
-            return res.status(400).json({
-                error: 'problems with the image'
-            })
-        }
-    })
+    const estadoCreacion = await crearImagen(ruta, binaryData)
+    if(estadoCreacion === 0){
+        return res.status(400).json({
+            error: 'problems with the image'
+        })
+    }
 
     // cargando modelo
     const modelLink = "file://./models/modelo_raza_perro/model.json"
@@ -179,13 +178,12 @@ async function postCatBreed(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    fs.writeFile(ruta, binaryData, (err) => {
-        if(err){
-            return res.status(400).json({
-                error: 'problems with the image'
-            })
-        }
-    })
+    const estadoCreacion = await crearImagen(ruta, binaryData)
+    if(estadoCreacion === 0){
+        return res.status(400).json({
+            error: 'problems with the image'
+        })
+    }
 
     // cargando modelo
     const modelLink = "file://./models/modelo_raza_gato/model.json"
@@ -248,13 +246,12 @@ async function postAllDogCat(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    fs.writeFile(ruta, binaryData, (err) => {
-        if(err){
-            return res.status(400).json({
-                error: 'problems with the image'
-            })
-        }
-    })
+    const estadoCreacion = await crearImagen(ruta, binaryData)
+    if(estadoCreacion === 0){
+        return res.status(400).json({
+            error: 'problems with the image'
+        })
+    }
 
     // cargando modelo
     const modelLink = "file://./models/modelo_perro_gato_nuevo/model.json"
