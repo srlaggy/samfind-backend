@@ -8,14 +8,14 @@ const IMAGE_HEIGHT = 224
 const IMAGE_CHANNELS = 3
 
 const preprocess = img => {
-    //convert the image data to a tensor
+    // convert the image data to a tensor
     const tensor = tf.node.decodeImage(img, IMAGE_CHANNELS)
-    //resize to 224 x 224
+    // resize to 224 x 224
     const resized = tf.image.resizeBilinear(tensor, [IMAGE_WIDTH, IMAGE_HEIGHT]).toFloat()
     // Normalize the image
-    const offset = tf.scalar(255.0)
-    const normalized = tf.scalar(1.0).sub(resized.div(offset))
-    //We add a dimension to get a batch shape
+    const offset = tf.scalar(255.0 / 2)
+    const normalized = resized.div(offset).sub(1)
+    // We add a dimension to get a batch shape
     const batched = normalized.expandDims(0)
     return batched
 }
