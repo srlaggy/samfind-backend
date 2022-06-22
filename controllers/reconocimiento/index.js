@@ -58,7 +58,7 @@ async function postDogCat(req, res){
     console.log("vamos a crear la imagen");
     const estadoCreacion = await crearImagen(ruta, binaryData)
     console.log("ya se creo la imagen");
-    if(!estadoCreacion){
+    if(estadoCreacion === 0){
         return res.status(400).json({
             error: 'problems with the image'
         })
