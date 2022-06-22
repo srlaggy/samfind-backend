@@ -20,6 +20,16 @@ const preprocess = img => {
     return batched
 }
 
+const crearImagen = async (ruta, binaryData) => {
+    fs.writeFile(ruta, binaryData, (err) => {
+        if(err){
+            return 0
+        } else {
+            return 1
+        }
+    })
+}
+
 // Metodo POST que recibe una imagen en base64, un nombre de archivo sin formato y un formato
 // Este metodo analiza la imagen y entrega el porcentaje de similitud con un perro y un gato
 async function postDogCat(req, res){
@@ -45,20 +55,21 @@ async function postDogCat(req, res){
     const nombreFile = name + "." + formato
     let binaryData = Buffer.from(image64, 'base64')
     const ruta = path.join(__dirname, "../../models/images/", nombreFile)
-    const ruta_unida = __dirname + "/../../models/images/" + nombreFile
-    console.log("dirname: " + __dirname);
-    console.log("relativa: " + "/../../models/images/");
-    console.log("file: " + nombreFile);
-    console.log("ruta unida: " + ruta_unida);
-    console.log("ruta join: " + ruta);
-    fs.writeFileSync(ruta, binaryData)
+    console.log("vamos a crear la imagen");
+    const estadoCreacion = await crearImagen(ruta, binaryData)
+    console.log("ya se creo la imagen");
+    if(!estadoCreacion){
+        return res.status(400).json({
+            error: 'problems with the image'
+        })
+    }
 
     // cargando modelo
     const modelLink = "file://./models/modelo_perro_gato_nuevo/model.json"
     const model = await tf.loadLayersModel(modelLink)
 
     // definiendo rutas y leyendo imagen
-    const imageLeer = fs.readFileSync(ruta)
+    // const imageLeer = fs.readFileSync(ruta)
     console.log("Procesando imagen...")
     const imagenProcesada = preprocess(imageLeer)
 
