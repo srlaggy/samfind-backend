@@ -46,7 +46,8 @@ async function postDogCat(req, res){
 
     // recibimos argumentos
     const dataTrim = req.body.image.trim()
-    const image64 = JSON.parse(dataTrim).img
+    // const image64 = JSON.parse(dataTrim).img
+    const image64 = dataTrim
     const formato = req.body.format
     const name = (req.body.name) ? req.body.name : "temp"
 
@@ -101,7 +102,8 @@ async function postDogBreed(req, res){
 
     // recibimos argumentos
     const dataTrim = req.body.image.trim()
-    const image64 = JSON.parse(dataTrim).img
+    // const image64 = JSON.parse(dataTrim).img
+    const image64 = dataTrim
     const formato = req.body.format
     const name = (req.body.name) ? req.body.name : "temp"
 
@@ -169,7 +171,8 @@ async function postCatBreed(req, res){
 
     // recibimos argumentos
     const dataTrim = req.body.image.trim()
-    const image64 = JSON.parse(dataTrim).img
+    // const image64 = JSON.parse(dataTrim).img
+    const image64 = dataTrim
     const formato = req.body.format
     const name = (req.body.name) ? req.body.name : "temp"
 
@@ -237,7 +240,8 @@ async function postAllDogCat(req, res){
 
     // recibimos argumentos
     const dataTrim = req.body.image.trim()
-    const image64 = JSON.parse(dataTrim).img
+    // const image64 = JSON.parse(dataTrim).img
+    const image64 = dataTrim
     const formato = req.body.format
     const name = (req.body.name) ? req.body.name : "temp"
 
